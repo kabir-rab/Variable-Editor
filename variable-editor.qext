@@ -1,0 +1,24 @@
+{
+    "type": "mashup",
+    "name": "Variable Editor",
+    "description": "allows you to view, search and export variables from Qlik Sense environment for any of your application",
+    "version": "1.0.0",
+    "author": "Kabir Rab",
+    "homepage": "https://kabonline.net/",
+	"preview": "resources/img/ve_preview.png",	
+	"keywords": [
+        "Variable",
+        "spectre",
+        "export",        
+        "qlik",
+        "qlik-sense",
+        "qlik-sense-mashup",
+        "sense",
+        "apps"
+    ],
+    "license": "MIT",
+    "repository": "",
+    "dependencies": {
+        "qlik-sense": ">=3.0.x"
+    }
+}

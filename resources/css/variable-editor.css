@@ -1,0 +1,221 @@
+html, body{
+	height: 100%;
+	padding: .5rem;
+	/*opacity: 0.5;*/
+	font-size: 16px;
+	font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+}
+
+.navbar{
+	margin-bottom : 15px;
+}
+
+.icon.icon-2x {
+    font-size: 1.0rem;
+}
+
+.menu-right{
+	padding: 0 1rem 0 0;
+}
+
+.menu-left{
+	padding: 0 0 0 1rem;
+}
+
+.downloadbtn{
+	display: none;
+}
+
+.app-list{
+	width: 350px;
+}
+
+.chart-container{
+	height:100%;
+	width:100%;
+}
+
+.card{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+	border: 0;
+	border-radius: 6px;
+	/*Light shadow */
+	box-shadow: 0 0.25rem 1rem rgba(48,55,66,.15);	
+    height: 100%;    
+}
+
+.panel{
+	margin-bottom: 1rem;
+    margin-top: 1rem;
+	box-shadow: 0 0.25rem 1rem rgba(48,55,66,.15);
+	border: 0;
+	border-radius: 6px;
+}
+
+.panel-title{
+	font-weight: 700;	
+}
+
+.panel-nav {
+	padding: 0.8rem;
+}
+
+.highlight{
+	font-weight: 700;
+	font-size: 1.25rem;
+}
+
+.loading{
+	height:100%;
+}
+
+.loading.loading-lg::after {
+    height: 3.6rem !important;
+    width: 3.6rem !important;
+}
+
+.toast{
+	display: none;
+	bottom: 0px;
+	right:0px;
+	width: 25%;
+	min-width: 300px;
+	margin: 2rem;
+}
+
+/* spectre modal re-write*/
+.modal.active .modal-container-sp, .modal:target .modal-container-sp {
+    animation: slide-down .2s ease 1;
+    z-index: 1;
+}
+
+.modal-container-sp {
+    background: #fff;
+    border-radius: .1rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(48,55,66,.3);
+    display: flex;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-height: 75vh;
+    max-width: 640px;
+    padding: .8rem;
+    width: 100%;
+}
+
+.modal-footer{
+	margin: 1rem 0 0 0;
+}
+
+/* accordion panel */
+.accordion {
+	background-color: #eee;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;	
+	outline: none;
+	border: none;
+	transition: 0.4s;
+}
+
+.accordion-active, .accordion:hover {
+  	background-color: #5755D9;
+	color: #fff;
+}
+
+/* Style the accordion var-panel */
+.var-panel {
+	/*padding: 16px; 18px 0 18px*/
+	background-color: #fcfcfc; 
+	overflow: hidden;
+	max-height: 0;
+	overflow: hidden;
+	margin-bottom: 5px;
+	transition: max-height 0.2s ease-out;
+	border: solid thin #cfcfcf;
+}
+
+.acordion-box{
+	border: solid thin #cfcfcf;
+	width: 99%;
+	margin: 0% 1% 1% 0%;
+	font-weight: 300;
+	font-family: Courier,monospace;
+	background-color: #fff;
+	padding: 1%;
+}
+
+.acordion-box-header{
+	margin: 1% 0% 0% 1%;
+	font-weight: 700;
+}
+
+.accord-menu{
+	padding: 0 1% 1% 0;
+}
+
+.accordion:after {
+  	content: '\02795'; /* Unicode character for "plus" sign (+) */
+  	font-size: 13px;
+  	color: #777;
+  	float: right;
+  	margin-left: 5px;
+}
+
+.active:after {
+  	content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* Loading Overlay */
+.overlay {
+	position: fixed; 
+	display: block; 
+	width: 100%; 
+	height: 100%;
+	top: 0; 
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5); 
+	z-index: 10;
+}
+
+.form-text-area{
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	min-height: 20%;
+	max-height: 25%;
+}
+
+/* On screens that are 600px or more */
+@media screen and (min-width: 600px) {
+ 	.top{
+		height: 20%;
+	}
+	
+	.middle{
+		height: 40%; 
+		margin-top: 10px;
+	}
+	
+	.bottom{
+		height: 38%; 
+		margin-top: 10px;
+	}
+	
+	.column{
+		height: 100%;				
+	}
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+ 	.column{
+		height: 250px;
+		margin-bottom: 20px;
+	}
+}
