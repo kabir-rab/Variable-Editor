@@ -1,6 +1,6 @@
 /*
 Developed by: Kabir Rab
-Version: 0.92
+Version: 0.97
 */
 
 //Please update your server details here if required
@@ -44,7 +44,7 @@ require( ["js/qlik"], function ( qlik ) {
 		});
 	}, config);
 	
-	//Change event trigger for the app dropdown to open the selected app and then get list of all variables for that selected app
+	//Change event trigger for the app drop-down to open the selected app and then get list of all variables for that selected app
 	$('#applist').change(function () {
 		
 		appName = $("#applist :selected").text(); // The text content of the selected option
@@ -58,7 +58,7 @@ require( ["js/qlik"], function ( qlik ) {
 			//Displays wait overlay - stops the users from selecting another app.
 			overlay(true);
 			
-			//Clear the html from the acordian - so that new list can be added.
+			//Clear the html from the accordion - so that new list can be added.
 			$('#varlist').empty();
 			$(".panel-title").html(appName);
 
@@ -66,17 +66,17 @@ require( ["js/qlik"], function ( qlik ) {
 			app = qlik.openApp(appID+"", config);
 			callbackMess(appName + " is Selected.");
 
-			//Retriving all the variables from the opened app
+			//Retrieving all the variables from the opened app
 			app.getList("VariableList", function(reply){
 				var	scriptOnlyVariable = 0,
 					dashboardVariable = 0,
 					SubHeaderHtml,
 					accordionHtml;					
 				
-				//Retriving total number of variables in the selected app
+				//Retrieving total number of variables in the selected app
 				totalVariable = reply.qVariableList.qItems.length;				
 				
-				//Looping through the list to create an acordian to display to the end user
+				//Looping through the list to create an accordion to display to the end user
 				$.each(reply.qVariableList.qItems, function(key, value) {
 					var isScripted, editIcon='', 
 						qDefinitionCheck = value.hasOwnProperty('qDefinition') ? value.qDefinition : '';
@@ -111,7 +111,7 @@ require( ["js/qlik"], function ( qlik ) {
 				
 				$(".panel-nav").html(SubHeaderHtml);
 			}).then(function(){
-				//This created the accordian for the variables loaded from the app
+				//This created the accordion for the variables loaded from the app
 				var accordionVar = document.getElementsByClassName("accordion"),
 				 	i;
 				
@@ -171,14 +171,8 @@ require( ["js/qlik"], function ( qlik ) {
 	*/
 	//this drives the check box to hide and show script variables
 	function listSearch(){
-		var searchType;	
-				
-		if($('#list-filter').prop("checked") == true){
-			searchType = 'undefined';
-		}else{
-			searchType = 'all';
-		};	
-		//console.log(searchType);
+		var searchType = ($('#list-filter').prop("checked") == true) ? 	'undefined' : 'all'
+					
 		$('.accordion').filter(function () {
 			$(this).toggle($(this).attr('data-type').toLowerCase().indexOf(searchType) > -1)
 			$(this).next().toggle($(this).attr('data-type').toLowerCase().indexOf(searchType) > -1);
@@ -236,15 +230,9 @@ require( ["js/qlik"], function ( qlik ) {
 		return newdefString;//str.replace(/\n|\r/g, "");
 	};
 	
-	//This cheks to see if the variable is script generated or not
+	//This checks to see if the variable is script generated or not
 	function checkScripted(defString) {
-		var isScriptedCheck;
-		if(defString === true){			
-			isScriptedCheck = defString;			
-		}
-		else {
-			isScriptedCheck = false;
-		}
+		var isScriptedCheck = (defString === true) ? defString : false;		
 		
 		return isScriptedCheck;
 	}
