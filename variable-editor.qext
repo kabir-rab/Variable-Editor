@@ -17,7 +17,7 @@
         "apps"
     ],
     "license": "MIT",
-    "repository": "",
+    "repository": "https://github.com/kabir-rab/Variable-Editor",
     "dependencies": {
         "qlik-sense": ">=3.0.x"
     }
