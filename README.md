@@ -1,6 +1,8 @@
 # Variable-Editor
 This is a Qlik Sense mashup which allows Qlik Sense users to view, search and export variables from Qlik Sense environment (server or desktop) for any applications. This is the first iteration of this mashup using the capability API.
 
+_IMPORTANT! This is Alpha release! There are some minor limitations with export function. Please see the [limilations](#known-bugs-and-limitations) section below._
+
 # Why...
 Qlik Sense variable UI currently does not have search functionality to search through all the variables. It also does not have any feature to export the list of variables out of the app. This mashup provides easy access to those functionalities without the need for configuring anything else. 
 
@@ -31,7 +33,7 @@ var config = {
 };
 ```
 
-# Known bugs/limitations
+# Known bugs and limitations
  - Cannot perform a combined search - ex: front-end only variables with name containing "date". You can only perform one type of search, so Its either filter by the Script only or just search by name.
  - Only searches the name of the variables for now.
  - Export function only works on chrome for now. Also, during export "#" gets replaced by url encoded version (%23). Some bugs remained when double quotes and commas are used in variables.
