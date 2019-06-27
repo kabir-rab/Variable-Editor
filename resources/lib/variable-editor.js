@@ -78,8 +78,8 @@ require( ["js/qlik"], function ( qlik ) {
 				
 				//Looping through the list to create an acordian to display to the end user
 				$.each(reply.qVariableList.qItems, function(key, value) {
-					var isScripted, editIcon='';
-					
+					var isScripted, editIcon='', 
+						qDefinitionCheck = value.hasOwnProperty('qDefinition') ? value.qDefinition : '';
 					variableList.push(value);
 					//console.log(value, "variable item");
 
@@ -97,7 +97,7 @@ require( ["js/qlik"], function ( qlik ) {
 					}
 					
 					accordionHtml = '<button class="accordion" data-type="'+ value.qIsScriptCreated +' all">'+ varTypeIcon + value.qName +'</button><div class="var-panel">';
-					accordionHtml += '<div class="acordion-box-header">Definition<div class="acordion-box">'+ value.qDefinition +'</div>';
+					accordionHtml += '<div class="accordion-box-header">Definition<div class="accordion-box">'+ qDefinitionCheck +'</div>';
 					accordionHtml += editIcon;								
 					
 					$(accordionHtml).appendTo("#varlist");
@@ -209,9 +209,10 @@ require( ["js/qlik"], function ( qlik ) {
 		var finalJSON = [];
 
 		$.each(results, function(key, value) {
-			var definitionFinal = removeReturns(value.qDefinition);
-			var qIsScriptCreatedFinal = checkScripted(value.qIsScriptCreated);
-			
+			var definitionFinal,
+				qIsScriptCreatedFinal = checkScripted(value.qIsScriptCreated),			
+				definitionFinal = value.hasOwnProperty('qDefinition') ? removeReturns(value.qDefinition) : '';
+						
 			finalJSON.push({'"qId"': '"'+value.qInfo.qId +'"', '"qName"': '"'+value.qName +'"','"qDefinition"': '"'+ definitionFinal +'"', '"qIsScriptCreated"': '"'+qIsScriptCreatedFinal+'"'});
 		});
 		
