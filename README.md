@@ -1,6 +1,8 @@
 # Variable-Editor
 This is a Qlik Sense mashup which allows Qlik Sense users to view, search and export variables from Qlik Sense environment (server or desktop) for any applications. This is the first iteration of this mashup using the capability API.
 
+### UPDATE - This now also allows the user to export the Load Script for any apps. 
+
 _IMPORTANT! This is Alpha release! There are some minor limitations with export function. Please see the [limilations](#known-bugs-and-limitations) section below._
 
 # Why...?
