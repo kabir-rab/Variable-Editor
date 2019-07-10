@@ -1,6 +1,6 @@
 /*
 Developed by: Kabir Rab
-Version: 0.97
+Version: 0.98
 */
 
 //Please update your server details here if required
@@ -65,7 +65,7 @@ require( ["js/qlik"], function ( qlik ) {
 			//Opening the selected app
 			app = qlik.openApp(appID+"", config);
 			callbackMess(appName + " is Selected.");
-
+			
 			//Retrieving all the variables from the opened app
 			app.getList("VariableList", function(reply){
 				var	scriptOnlyVariable = 0,
@@ -163,7 +163,8 @@ require( ["js/qlik"], function ( qlik ) {
 	//Loading overlay function
 	function overlay(trig) {
 		$('.overlay').toggle(trig);	
-	};		
+	};
+
 	
 	//Search function
 	/*
@@ -178,6 +179,7 @@ require( ["js/qlik"], function ( qlik ) {
 			$(this).next().toggle($(this).attr('data-type').toLowerCase().indexOf(searchType) > -1);
 		});	
 	}
+
 	
 	//This drives the search box
 	$('#search-string').on('keyup', function () {
@@ -188,11 +190,13 @@ require( ["js/qlik"], function ( qlik ) {
 			$(this).next().toggle($(this).text().toLowerCase().indexOf(search) > -1);
 		});
 	});
+
 	
 	//Button event
 	$('#list-filter').click(function(){
 		listSearch();	
 	});
+
 	
 	/*
 		Download CSV function - This is limited to chrome for now. There are issues with special characters too that require some more time.
@@ -220,6 +224,25 @@ require( ["js/qlik"], function ( qlik ) {
 		download.setAttribute("download", appName+".csv");		
 		download.click();
 	})
+
+	
+	//Doanload app load script funtion
+	//Slighly different approch to text on cross browser capabilities
+	$('#downloadscript').click(function(){
+		app.getScript().then(function(script){
+			var loadScript = script.qScript;
+			//removing hashtags for encodeURI to work
+			loadScript = loadScript.replace(/#/g, '%23');
+			var loadScriptContent = "data:attachment/text," + loadScript;
+			var encodedUri = encodeURI(loadScriptContent);
+			var downloadScript = document.createElement('a');
+
+			downloadScript.setAttribute("href", encodedUri);
+			downloadScript.setAttribute("download", appName+'.txt');		
+			downloadScript.click();			
+		});
+	});
+
 		
 	//Removes carriage returns, white spaces and replaces # with url encode
 	function removeReturns(defString) {
@@ -229,6 +252,7 @@ require( ["js/qlik"], function ( qlik ) {
 
 		return newdefString;//str.replace(/\n|\r/g, "");
 	};
+
 	
 	//This checks to see if the variable is script generated or not
 	function checkScripted(defString) {
@@ -236,6 +260,7 @@ require( ["js/qlik"], function ( qlik ) {
 		
 		return isScriptedCheck;
 	}
+
 	
 	//This converts the object into csv
 	function toCSV(json) {
