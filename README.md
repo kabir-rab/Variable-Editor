@@ -1,3 +1,4 @@
+[![Github All Releases](https://img.shields.io/github/downloads/kabir-rab/Variable-Editor/total.svg)]()
 # Variable-Editor
 This is a Qlik Sense mashup which allows Qlik Sense users to view, search and export variables from Qlik Sense environment (server or desktop) for any applications. This is the first iteration of this mashup using the capability API.
 
